@@ -28,7 +28,7 @@
         <Button Content="ANALYSER" Margin="634,60,125,0" VerticalAlignment="Top" Height="61" Background="#FF006C93" BorderThickness="5,5,5,5" BorderBrush="White" Foreground="White" FontWeight="Bold" FontFamily="Arial" FontSize="24" Click="Button_Analyser_Click"/>
 
         <!-- Content -->
-        <Button Content="NETTOYER" Margin="21,198,548,0" VerticalAlignment="Top" Height="171" Background="#FF006C93" BorderThickness="5,5,5,5" BorderBrush="White" Foreground="White" FontWeight="Bold" FontFamily="Arial" FontSize="24" Click="Button_Nettoyer_Click"/>
+        <Button x:Name="btnClean" Content="NETTOYER" Margin="21,198,548,0" VerticalAlignment="Top" Height="171" Background="#FF006C93" BorderThickness="5,5,5,5" BorderBrush="White" Foreground="White" FontWeight="Bold" FontFamily="Arial" FontSize="24" Click="Button_Nettoyer_Click"/>
         <Button Content="MISE À JOUR" Margin="21,391,548,0" VerticalAlignment="Top" Height="171" Background="#FF006C93" BorderThickness="5,5,5,5" BorderBrush="White" Foreground="White" FontWeight="Bold" FontFamily="Arial" FontSize="24" Click="Button_MAJ_Click"/>
         <Button Content="HISTORIQUE" Margin="539,198,30,0" VerticalAlignment="Top" Height="171" Background="#FF006C93" BorderThickness="5,5,5,5" BorderBrush="White" Foreground="White" FontWeight="Bold" FontFamily="Arial" FontSize="24" Click="Button_Historique_Click"/>
         <Button Content="SITE WEB" Margin="539,391,30,0" VerticalAlignment="Top" Height="171" Background="#FF006C93" BorderThickness="5,5,5,5" BorderBrush="White" Foreground="White" FontWeight="Bold" FontFamily="Arial" FontSize="24" Click="Button_SiteWeb_Click"/>

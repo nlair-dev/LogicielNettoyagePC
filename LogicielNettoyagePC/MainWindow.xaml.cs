@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls.Primitives;
 
 namespace LogicielNettoyagePC
 {
@@ -37,7 +36,7 @@ namespace LogicielNettoyagePC
                 {
                     file.Delete();
                     Console.WriteLine(file.FullName);
-                } catch(Exception ex)
+                } catch(Exception)
                 {
                     continue;
                 }
@@ -49,7 +48,7 @@ namespace LogicielNettoyagePC
                 {
                     dir.Delete(true);
                     Console.WriteLine(dir.FullName);
-                } catch(Exception ex)
+                } catch(Exception)
                 {
                     continue;
                 }
@@ -58,7 +57,32 @@ namespace LogicielNettoyagePC
 
         private void Button_Nettoyer_Click(object sender, RoutedEventArgs e)
         {
+            Console.WriteLine("Nettoyage en cours...");
+            btnClean.Content = "Nettoyage en cours";
+            Clipboard.Clear(); // Nettoyage du presse papier
 
+            // Nettoyage des fichiers temporaires de windows
+            try
+            {
+                ClearTempData(winTemp); 
+            } catch(Exception ex)
+            {
+                Console.WriteLine("Erreur: " + ex.Message);
+            }
+
+
+            // Nettoyage des fichiers temporaires des applications
+            try
+            {
+                ClearTempData(appTemp);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erreur: " + ex.Message);
+            }
+
+            btnClean.Content = "Nettoyage terminé";
+            espace.Content = "0Mb";
         }
 
         private void Button_MAJ_Click(object sender, RoutedEventArgs e)
@@ -106,7 +130,8 @@ namespace LogicielNettoyagePC
             
 
             espace.Content = totalSize + " Mb";
-            date.Content = DateTime.Today;
+            titre.Content = "Analyse effectuée!";
+            date.Content = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
         }
     }
 }
