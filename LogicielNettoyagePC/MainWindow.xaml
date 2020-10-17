@@ -38,7 +38,7 @@
         <Label Content="Copyright 2020 - nicolas lair" Foreground="Black" FontFamily="Arial Narrow" FontSize="20" Margin="0,595,0,0" FontWeight="Normal" HorizontalAlignment="Center" Height="39" VerticalAlignment="Top"/>
 
         <!-- Bandeau d'information -->
-        <Rectangle Height="55" Stroke="Black" VerticalAlignment="Top" Fill="#FFF76E4F" StrokeThickness="0" Margin="0,629,0,0" Visibility="Hidden"/>
-        <Label x:Name="actu"  Content="Information" Foreground="Black" FontFamily="Arial Narrow" FontSize="20" Margin="452,629,0,0" FontWeight="Normal" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Visibility="Hidden"/>
+        <Rectangle x:Name="rectangle_actu" Height="55" Stroke="Black" VerticalAlignment="Top" Fill="#FFF76E4F" StrokeThickness="0" Margin="0,629,0,0" Visibility="Hidden"/>
+        <Label x:Name="lbl_actu"  Content="Information" Foreground="Black" FontFamily="Arial Narrow" FontSize="20" Margin="0,629,0,0" FontWeight="Normal" HorizontalAlignment="Center" Height="35" VerticalAlignment="Top" Visibility="Hidden"/>
     </Grid>
 </Window>

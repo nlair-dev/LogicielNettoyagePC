@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Windows;
 
 namespace LogicielNettoyagePC
@@ -11,6 +12,7 @@ namespace LogicielNettoyagePC
     /// </summary>
     public partial class MainWindow : Window
     {
+        string version = "1.0.0";
         public DirectoryInfo winTemp;
         public DirectoryInfo appTemp;
 
@@ -19,6 +21,38 @@ namespace LogicielNettoyagePC
             InitializeComponent();
             winTemp = new DirectoryInfo(@"C:\Windows\Temp");
             appTemp = new DirectoryInfo(System.IO.Path.GetTempPath());
+            CheckActu();
+            CheckVersion();
+        }
+
+        // Vérification d'une nouvelle actualité
+        public void CheckActu()
+        {
+            string url = "http://localhost/siteWeb/actu.txt";
+            using (WebClient client = new WebClient())
+            {
+                string actu = client.DownloadString(url);
+                if(actu != string.Empty)
+                {
+                    lbl_actu.Content = actu;
+                    lbl_actu.Visibility = Visibility.Visible;
+                    rectangle_actu.Visibility = Visibility.Visible;
+                }
+            }
+        }
+
+        // Vérification de la version
+        public void CheckVersion()
+        {
+            string url = "http://localhost/siteWeb/version.txt";
+            using (WebClient client = new WebClient())
+            {
+                string derniereVersion = client.DownloadString(url);
+                if(version != derniereVersion)
+                {
+                    MessageBox.Show("Une nouvelle mise à jour est disponible", "Nouvelle mise à jour", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
         }
 
         // Calcul de la taille d'un dossier
