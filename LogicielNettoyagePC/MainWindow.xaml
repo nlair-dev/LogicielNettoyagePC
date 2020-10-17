@@ -16,15 +16,15 @@
         <Rectangle Height="180" Stroke="Black" VerticalAlignment="Bottom" Fill="#FF006C93" StrokeThickness="0" Margin="0,0,0,504"/>
 
         <!-- Titre -->
-        <Label x:Name="titre" Content="Analyse du PC nécessaire" Foreground="White" FontFamily="Arial" FontSize="30" Margin="21,10,548,594" FontWeight="Bold"/>
+        <Label x:Name="lbl_titre" Content="Analyse du PC nécessaire" Foreground="White" FontFamily="Arial" FontSize="30" Margin="21,10,548,594" FontWeight="Bold"/>
 
         <!-- Sous titre -->
         <Label Content="Espace à nettoyer : " Foreground="White" FontFamily="Arial" FontSize="22" Margin="21,78,680,550" FontWeight="Bold"/>
         <Label Content="Dernière analyse : " Foreground="White" FontFamily="Arial" FontSize="22" Margin="21,117,680,502" FontWeight="Bold"/>
 
         <!-- Les valeurs -->
-        <Label x:Name="date" Content="Jamais" Foreground="White" FontFamily="Arial" FontSize="22" Margin="214,117,478,513" />
-        <Label x:Name="espace" Content="??? Mb" Foreground="White" FontFamily="Arial" FontSize="22" Margin="236,80,456,540" />
+        <Label x:Name="lbl_date" Content="Jamais" Foreground="White" FontFamily="Arial" FontSize="22" Margin="214,117,478,513" />
+        <Label x:Name="lbl_espace" Content="??? Mb" Foreground="White" FontFamily="Arial" FontSize="22" Margin="236,80,456,540" />
         <Button Content="ANALYSER" Margin="634,60,125,0" VerticalAlignment="Top" Height="61" Background="#FF006C93" BorderThickness="5,5,5,5" BorderBrush="White" Foreground="White" FontWeight="Bold" FontFamily="Arial" FontSize="24" Click="Button_Analyser_Click"/>
 
         <!-- Content -->

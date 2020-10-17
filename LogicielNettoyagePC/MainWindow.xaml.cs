@@ -23,10 +23,11 @@ namespace LogicielNettoyagePC
             appTemp = new DirectoryInfo(System.IO.Path.GetTempPath());
             CheckActu();
             CheckVersion();
+            GetDate();
         }
 
         // Vérification d'une nouvelle actualité
-        public void CheckActu()
+        private void CheckActu()
         {
             string url = "http://localhost/siteWeb/actu.txt";
             using (WebClient client = new WebClient())
@@ -42,7 +43,7 @@ namespace LogicielNettoyagePC
         }
 
         // Vérification de la version
-        public void CheckVersion()
+        private void CheckVersion()
         {
             string url = "http://localhost/siteWeb/version.txt";
             using (WebClient client = new WebClient())
@@ -56,13 +57,13 @@ namespace LogicielNettoyagePC
         }
 
         // Calcul de la taille d'un dossier
-        public long DirSize(DirectoryInfo dir)
+        private long DirSize(DirectoryInfo dir)
         {
             return dir.GetFiles().Sum(fi => fi.Length) + dir.GetDirectories().Sum(di => DirSize(di));
         }
 
         // Vider un dossier
-        public void ClearTempData(DirectoryInfo di)
+        private void ClearTempData(DirectoryInfo di)
         {
             foreach(FileInfo file in di.GetFiles())
             {
@@ -116,7 +117,7 @@ namespace LogicielNettoyagePC
             }
 
             btnClean.Content = "Nettoyage terminé";
-            espace.Content = "0Mb";
+            lbl_espace.Content = "0Mb";
         }
 
         private void Button_MAJ_Click(object sender, RoutedEventArgs e)
@@ -148,7 +149,7 @@ namespace LogicielNettoyagePC
             AnalyserForlders();
         }
 
-        public void AnalyserForlders()
+        private void AnalyserForlders()
         {
             Console.WriteLine("Début de l'analyse...");
             long totalSize = 0;
@@ -163,9 +164,26 @@ namespace LogicielNettoyagePC
             }
             
 
-            espace.Content = totalSize + " Mb";
-            titre.Content = "Analyse effectuée!";
-            date.Content = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            lbl_espace.Content = totalSize + " Mb";
+            lbl_titre.Content = "Analyse effectuée!";
+            string date = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+            lbl_date.Content = date;
+            SaveDate(date);
+        }
+
+        // Sauvegarde la date de dernière analyse
+        private void SaveDate(string date)
+        {
+            File.WriteAllText("date.txt", date);
+        }
+
+        private void GetDate()
+        {
+            string date = File.ReadAllText("date.txt");
+            if(date != String.Empty)
+            {
+                lbl_date.Content = date;
+            }
         }
     }
 }
