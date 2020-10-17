@@ -174,16 +174,33 @@ namespace LogicielNettoyagePC
         // Sauvegarde la date de dernière analyse
         private void SaveDate(string date)
         {
-            File.WriteAllText("date.txt", date);
+            try
+            {
+                StreamWriter sw = new StreamWriter("date.txt");
+                sw.WriteLine(date);
+                sw.Close();
+            } catch(Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+            
         }
 
         private void GetDate()
         {
-            string date = File.ReadAllText("date.txt");
-            if(date != String.Empty)
+            try
             {
-                lbl_date.Content = date;
-            }
+                StreamReader sr = new StreamReader("date.txt");
+                string date = sr.ReadLine();
+                if (date != String.Empty)
+                {
+                    lbl_date.Content = date;
+                }
+                sr.Close();
+            } catch(Exception e)
+            {
+                Console.WriteLine("Excepion: " + e.Message);
+            }      
         }
     }
 }
